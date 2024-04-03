@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note right of browser: The browser sends a post request containing json formated data: {"content":"new note","date":"2024-04-03T13:13:36.835Z"}
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp//exampleapp/new_note_spa
+    activate server
+    server-->>browser: JSON
+    Note right of server: The server sends a json with a message confirming the creation of a new note.
+
+    deactivate server
+
+    Note right of browser: The browser executes the callback function that redraws the notes
